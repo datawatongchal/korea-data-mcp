@@ -1,28 +1,28 @@
-# Korea Data MCP — 데이터와통찰
+# 데이터와통찰 MCP 커넥터
 
-**English** | [한국어](README.ko.md)
+**한국어** | [English](README.en.md)
 
-Remote [MCP](https://modelcontextprotocol.io) connectors that let an AI assistant query Korean public data: government procurement, defense procurement, local businesses, real-estate transactions, land parcels, companies, corporate filings, trade statistics and startup support programs.
+AI가 한국 공공데이터를 직접 조회할 수 있게 해 주는 원격 [MCP](https://modelcontextprotocol.io) 커넥터입니다. 공공조달, 국방조달, 상권, 부동산 실거래, 땅, 기업, 공시, 수출입, 창업지원을 다룹니다.
 
-Operated by Data & Insight (㈜데이터와통찰) — <https://datawatongchal.com>
+운영: (주)데이터와통찰 — <https://datawatongchal.com>
 
-- **Nothing to install.** Remote servers over Streamable HTTP.
-- **No sign-up, no API key.** Add the URL and start asking.
-- **Read-only.** Every tool only looks data up.
-- **Free** to use.
+- **설치가 없습니다.** Streamable HTTP 방식의 원격 서버입니다.
+- **가입도 API 키도 없습니다.** 주소만 넣으면 바로 물어볼 수 있습니다.
+- **읽기 전용입니다.** 모든 도구는 조회만 합니다.
+- **무료**로 공개 운영합니다.
 
-This repository is documentation only. It contains no server source code and does not redistribute any dataset — the connectors are a lookup service on top of data published by Korean public agencies, and every answer names its source.
+이 저장소는 소개 문서만 담고 있습니다. 서버 소스 코드는 없으며, 공공데이터를 재배포하지도 않습니다. 커넥터는 공공기관이 공개한 자료를 정리해 조회하게 해 주는 서비스이고, 답마다 출처를 밝힙니다.
 
-## Quick start
+## 바로 연결하기
 
-Use the all-in-one connector unless you only need one field:
+한 분야만 필요한 경우가 아니라면 통합 커넥터 하나만 붙이면 됩니다.
 
 ```
 https://datawatongchal.com/mcp
 ```
 
-**Claude (claude.ai / Claude Desktop)**
-Settings → Connectors → Add custom connector → enter a name and the URL above. There is no login screen.
+**Claude (claude.ai / Claude 데스크톱)**
+설정 → 커넥터 → 사용자 지정 커넥터 추가 → 이름과 위 주소를 입력합니다. 인증 화면은 없습니다.
 
 **Claude Code**
 
@@ -30,167 +30,167 @@ Settings → Connectors → Add custom connector → enter a name and the URL ab
 claude mcp add --transport http datawatongchal https://datawatongchal.com/mcp
 ```
 
-**Other clients**
-Any client that supports remote Streamable HTTP MCP servers should work with the URL alone. Check your client's documentation for the exact syntax.
+**그 밖의 클라이언트**
+Streamable HTTP 원격 MCP 서버를 지원하는 클라이언트라면 주소만 넣으면 됩니다. 설정 문법은 각 클라이언트 문서를 확인하세요.
 
-If tools do not show up, refresh the tool list in the connector settings and start a new conversation.
+도구가 불리지 않으면 커넥터 설정에서 도구 목록을 새로 고친 뒤 새 대화를 시작하세요.
 
-## Connectors
+## 커넥터 목록
 
-One all-in-one connector and nine single-field connectors. Tool-name prefixes tell you the field.
+통합 1개와 분야별 9개입니다. 도구 이름의 앞머리가 분야를 나타냅니다.
 
-| Field | URL | Tools | What it covers |
+| 분야 | 주소 | 도구 수 | 다루는 것 |
 |---|---|---|---|
-| **All-in-one** | `https://datawatongchal.com/mcp` | 41 | Everything below in a single connector. New fields are added automatically. |
-| Procurement | `https://datawatongchal.com/mcp/g2b` | 8 | KONEPS (나라장터): order plans → pre-specifications → bid notices → awards → contracts |
-| Defense procurement | `https://datawatongchal.com/mcp/d2b` | 3 | DAPA defense e-procurement (a separate system from KONEPS) |
-| Local businesses | `https://datawatongchal.com/mcp/store` | 4 | About 2.7 million operating shops by administrative district and industry |
-| Real estate | `https://datawatongchal.com/mcp/realestate` | 4 | About 24 million actual transactions since 2020, plus commercial rent and vacancy |
-| Land (Pointology) | `https://datawatongchal.com/mcp/pointology` | 3 | Everything about one coordinate: land category, official land price, zoning, satellite observations |
-| Companies | `https://datawatongchal.com/mcp/corp` | 4 | About 550,000 workplaces from National Pension data, plus Data Voucher suppliers |
-| Filings | `https://datawatongchal.com/mcp/dart` | 4 | DART disclosure filings and listed-company financials |
-| Trade | `https://datawatongchal.com/mcp/trade` | 4 | Customs export/import statistics since 2015 by item (HS 10-digit), country and month |
-| Startup support | `https://datawatongchal.com/mcp/startup` | 7 | Support program notices, incubator space, free courses, location data |
+| **데이터와통찰(통합)** | `https://datawatongchal.com/mcp` | 41 | 아래 전부를 커넥터 하나로. 분야가 늘면 저절로 더해집니다. |
+| 조달 | `https://datawatongchal.com/mcp/g2b` | 8 | 나라장터: 발주계획 → 사전규격 → 입찰공고 → 낙찰 → 계약 |
+| 국방조달 | `https://datawatongchal.com/mcp/d2b` | 3 | 방위사업청 국방전자조달(나라장터와 별개) |
+| 상권 | `https://datawatongchal.com/mcp/store` | 4 | 영업 중인 가게 약 270만 곳, 행정동·업종별 |
+| 부동산 | `https://datawatongchal.com/mcp/realestate` | 4 | 2020년부터 실거래 약 2,400만 건, 상가·오피스 임대료와 공실률 |
+| 땅(Pointology) | `https://datawatongchal.com/mcp/pointology` | 3 | 좌표 하나로 그 땅의 지목·공시지가·용도지역·위성 관측 |
+| 기업 | `https://datawatongchal.com/mcp/corp` | 4 | 국민연금 사업장 약 55만 곳과 데이터바우처 가공기업 |
+| 공시 | `https://datawatongchal.com/mcp/dart` | 4 | DART 공시 목록과 상장사 재무 |
+| 수출입 | `https://datawatongchal.com/mcp/trade` | 4 | 관세청 2015년부터 품목(HS 10자리)·나라·월별 |
+| 창업지원 | `https://datawatongchal.com/mcp/startup` | 7 | 지원사업 공고, 창업 공간, 무료 강좌, 입지 |
 
-Counts are approximate, as of November 2026. An introduction page for each field is at `https://datawatongchal.com/connectors/{all|g2b|d2b|store|realestate|pointology|corp|dart|trade|startup}`.
+건수는 2026년 11월 기준 어림값입니다. 분야별 소개 페이지는 `https://datawatongchal.com/connectors/{all|g2b|d2b|store|realestate|pointology|corp|dart|trade|startup}` 입니다.
 
-## Tools
+## 도구
 
-### Procurement — `g2b_`
+### 조달 — `g2b_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `g2b_search_notices` | Bid notices: counts, monthly trend, work type, median estimated price, plus a list with deadlines |
-| `g2b_prespecs` | Pre-specifications: allocated budget, comment deadline, software-project flag, spec document link |
-| `g2b_order_plans` | Order plans: planned month, amount, contract method |
-| `g2b_award_stats` | Awards: award-rate distribution, number of bidders, frequent winners |
-| `g2b_contracts` | Contracts: amount, method, period, vendor shares, ordering agency |
-| `g2b_breakdown` | Counts and amounts by group (month, field, agency, region, price band, or your own segments) |
-| `g2b_bid_timeline` | The history of one project from order plan to contract |
+| `g2b_search_notices` | 입찰공고: 공고 수, 월별 흐름, 업무구분, 추정가격 중앙값 요약과 마감 시각이 있는 목록 |
+| `g2b_prespecs` | 사전규격: 배정예산, 의견 마감, SW사업 여부, 규격서 링크 |
+| `g2b_order_plans` | 발주계획: 발주 예정 월, 금액, 계약 방법 |
+| `g2b_award_stats` | 낙찰: 낙찰률 분포, 참가 업체 수, 자주 낙찰받는 업체 |
+| `g2b_contracts` | 계약: 금액, 방법, 기간, 업체 지분, 수요기관 |
+| `g2b_breakdown` | 그룹별 건수와 금액(월·분야·기관·지역·금액대, 직접 정한 묶음) |
+| `g2b_bid_timeline` | 한 사업의 경과(발주계획부터 계약까지) |
 
-### Defense procurement — `d2b_`
+### 국방조달 — `d2b_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `d2b_search` | Search and summary of procurement plans, bid notices, open negotiated contracts, bid results and contracts |
-| `d2b_vendors` | Vendor ranking and share by contract amount |
-| `d2b_detail` | Every original field of one item, with its cancellation and change history |
+| `d2b_search` | 조달계획·입찰공고·공개수의협상·입찰결과·계약 검색과 요약 |
+| `d2b_vendors` | 업체별 계약 금액 순위와 점유율 |
+| `d2b_detail` | 한 건의 원문 항목 전부와 취소·변경 이력 |
 
-### Local businesses — `store_`
+### 상권 — `store_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `store_count` | Number of shops and rankings by industry, sub-region or administrative district |
-| `store_trend` | Quarterly shop counts and shops newly listed or dropped |
-| `store_brand` | Shop counts and regional spread for a brand, matched by shop name |
-| `store_editions` | Available editions and the caveats of each |
+| `store_count` | 점포 수와 순위(업종·하위 지역·행정동) |
+| `store_trend` | 분기별 점포 수와 새로 오른·빠진 가게 |
+| `store_brand` | 상호로 찾은 점포 수와 지역 분포 |
+| `store_editions` | 보유한 판과 판별 주의점 |
 
-### Real estate — `re_`
+### 부동산 — `re_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `re_stats` | Transaction counts, median price trend and regional rankings |
-| `re_deals` | Individual transaction records |
-| `re_complex` | One apartment complex: price by floor area, jeonse-to-price ratio, recent deals |
-| `re_commercial` | Retail and office rent per ㎡, vacancy rate and investment return |
+| `re_stats` | 거래 수, 가격 중위값 흐름, 지역 순위 |
+| `re_deals` | 개별 실거래 목록 |
+| `re_complex` | 아파트 단지 하나의 면적별 시세, 전세가율, 최근 거래 |
+| `re_commercial` | 상가·오피스의 ㎡당 임대료, 공실률, 투자수익률 |
 
-### Land (Pointology) — `point_`
+### 땅(Pointology) — `point_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `point_find` | Address or place name → coordinate candidates |
-| `point_info` | For one coordinate: address, parcel, land cover (7-year change), land category, official land price, zoning, buildings, terrain, soil, vegetation (NDVI), radar, surface temperature, night lights, agricultural weather |
-| `point_geo` | Twelve national spatial themes: administrative area, cadastre, zoning, regulations, buildings, roads, school districts, soil, geology, watershed, aviation restrictions, nearby facilities |
+| `point_find` | 주소·장소 이름 → 좌표 후보 |
+| `point_info` | 좌표의 주소, 필지, 토지피복(7년 변화), 지목, 공시지가, 용도지역, 건축물, 지형, 토양, 식생(NDVI), 레이더, 지표온도, 야간 불빛, 농업기상 |
+| `point_geo` | 국토공간정보 12개 주제(행정구역·지적·용도지역지구·규제·건축물·도로·학군·토양·지질·유역·항공규제·주변 시설) |
 
-### Companies — `corp_`
+### 기업 — `corp_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `corp_search` | Companies matching conditions, ordered by change in subscribers |
-| `corp_profile` | One company: monthly subscribers, joiners, leavers, estimated average reported income per person |
-| `corp_changes` | Changes in a period: new, closed, industry, address or name changes, incorporation |
-| `corp_stats` | Company counts by industry, region and size |
+| `corp_search` | 조건에 맞는 기업 목록(가입자 증감순) |
+| `corp_profile` | 한 기업의 월별 가입자, 신규, 상실, 1인 평균 신고 소득(추정) |
+| `corp_changes` | 기간 안의 기업 변화(신규·소멸·업종·주소·이름 변경·법인 전환) |
+| `corp_stats` | 업종·지역·규모별 기업 수 |
 
-### Filings — `dart_`
+### 공시 — `dart_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `dart_filings` | Filing list with counts by type and links to the originals |
-| `dart_company` | Company overview, recent financials, filings and National Pension headcount |
-| `dart_financials` | Annual and quarterly trend of key accounts (full statements on request) |
-| `dart_rank` | Listed-company rankings by account value or growth rate |
+| `dart_filings` | 공시 목록(유형별 건수, 원문 링크) |
+| `dart_company` | 회사 개황, 최근 재무, 공시, 국민연금 규모 |
+| `dart_financials` | 주요 계정의 연간·분기 추이(요청하면 전체 재무제표) |
+| `dart_rank` | 상장사 계정 값·증가율 순위 |
 
-### Trade — `trade_`
+### 수출입 — `trade_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `trade_items` | Item name → HS code candidates |
-| `trade_trend` | Monthly and yearly trend by item and country, with year-over-year change |
-| `trade_flash` | Preliminary export figures for the latest 10-day periods |
-| `trade_rank` | Item and country rankings |
+| `trade_items` | 품목명 → HS 코드 후보 |
+| `trade_trend` | 품목·나라별 월·연 추이와 전년 대비 |
+| `trade_flash` | 최근 10일 단위 수출 잠정치 |
+| `trade_rank` | 품목·나라 순위 |
 
-### Startup support — `startup_`
+### 창업지원 — `startup_`
 
-| Tool | What it returns |
+| 도구 | 알려 주는 것 |
 |---|---|
-| `startup_search` | Search support program notices |
-| `startup_match` | Notices open now that fit a company's region and age |
-| `startup_cert` | Look up a startup confirmation certificate by business registration number |
-| `startup_space` | Incubator rooms and rent |
-| `startup_edu` | Free startup courses |
-| `startup_notice` | Full text of one notice |
-| `startup_location` | Location data for a region: rent, vacancy, key money, shop-count trend |
+| `startup_search` | 지원사업 공고 검색 |
+| `startup_match` | 회사 지역·업력에 맞는, 지금 신청할 수 있는 공고 |
+| `startup_cert` | 사업자등록번호로 창업기업 확인서 조회 |
+| `startup_space` | 창업보육센터 호실과 임대료 |
+| `startup_edu` | 창업에듀 무료 강좌 |
+| `startup_notice` | 공고 하나의 전문 |
+| `startup_location` | 지역의 창업 입지(임대료·공실률·권리금·점포 수 흐름) |
 
-### Shared
+### 공통
 
-| Tool | What it does |
+| 도구 | 하는 일 |
 |---|---|
-| `request_data` | Sends a request for data that is not available yet. Works only when the user agrees and provides an email address. Available on the all-in-one and procurement connectors. |
+| `request_data` | 아직 없는 데이터를 요청합니다. 사용자가 동의하고 이메일을 줄 때만 작동합니다. 통합·조달 커넥터에 있습니다. |
 
-## Data sources and freshness
+## 출처와 갱신 주기
 
-| Field | Source | Coverage | Updated |
+| 분야 | 출처 | 보유 기간 | 갱신 |
 |---|---|---|---|
-| Procurement | Public Procurement Service, KONEPS (data.go.kr OpenAPI) | 2023-01-01 – today | Notices hourly; pre-specifications every 3 h; awards and order plans every 6 h; contracts daily |
-| Defense procurement | DAPA defense e-procurement (data.go.kr) | 2023-01 – | Daily |
-| Local businesses | Small Enterprise and Market Service, shop information (data.go.kr) | 2023-03 – | One edition per quarter |
-| Real estate | Ministry of Land, Infrastructure and Transport, actual transaction prices (data.go.kr OpenAPI); Korea Real Estate Board R-ONE commercial rental survey | 2020-01 – | Daily (last 3 months re-fetched for late filings and cancellations); rental survey quarterly |
-| Land | Data & Insight's own Sentinel-1/Sentinel-2 archive; MOLIT V-World; Ministry of Environment land cover map; MAFRA Farm Map; others | Korean Peninsula; NDVI since 2019 | Each value carries its own source and date |
-| Companies | National Pension Service workplace data; K-Data Data Voucher supplier list (data.go.kr) | Monthly editions from 2026-01 | Monthly |
-| Filings | Financial Supervisory Service, DART OpenAPI | Filings: last 3 years; financials: 2015 – (incl. quarterly) | Daily |
-| Trade | Korea Customs Service trade statistics (data.go.kr) | 2015 – ; about 245 countries; USD; 10-day flash since 2016 | Monthly |
-| Startup support | KISED K-Startup, startup space platform and startup education; MSS Bizinfo; SME public purchasing portal | Current notices; about 420 spaces and 340 courses | Daily |
+| 조달 | 조달청 나라장터(공공데이터포털 OpenAPI) | 2023-01-01~오늘 | 공고 1시간, 사전규격 3시간, 낙찰·발주계획 6시간, 계약 하루 |
+| 국방조달 | 방위사업청 국방전자조달(공공데이터포털 '방위사업청 군수품조달정보') | 2023-01~ | 매일 |
+| 상권 | 소상공인시장진흥공단 상가(상권)정보(공공데이터포털) | 2023-03~ | 분기마다 한 판 |
+| 부동산 | 국토교통부 실거래가 공개시스템(공공데이터포털 OpenAPI), 한국부동산원 R-ONE 상업용부동산 임대동향조사 | 2020-01~ | 매일(최근 3개월을 다시 받아 늦은 신고·해제 반영), 임대동향은 분기 |
+| 땅 | 데이터와통찰 자체 Sentinel-1·Sentinel-2 아카이브, 국토교통부 브이월드, 환경부 토지피복지도, 농림축산식품부 팜맵 등 | 한반도, NDVI는 2019년~ | 값마다 출처와 시점을 표기 |
+| 기업 | 국민연금공단 가입 사업장 내역, 한국데이터산업진흥원 데이터바우처 가공기업(공공데이터포털) | 2026-01 판부터 | 매달 |
+| 공시 | 금융감독원 DART OpenAPI | 공시 목록 최근 3년, 상장사 재무 2015년~(분기 포함) | 매일 |
+| 수출입 | 관세청 수출입무역통계(공공데이터포털 '관세청_품목별 국가별 수출입실적') | 2015년~, 약 245개 나라, 금액 USD, 10일 속보 2016년~ | 매달 |
+| 창업지원 | 창업진흥원 K-Startup·창업공간플랫폼·창업에듀, 중소벤처기업부 기업마당, 중소기업 공공구매 종합정보망 | 현재 공고, 창업 공간 약 420곳, 강좌 약 340개 | 매일 |
 
-## Things to know before you trust a number
+## 숫자를 읽기 전에 알아 둘 점
 
-The connectors return organized data and notes on how to read it. The judgment is left to you and your AI.
+커넥터는 정리된 데이터와 읽는 법을 줍니다. 판단은 사용자와 AI의 몫입니다.
 
-- **Procurement** — Anything before 2023 is *outside the coverage period*, not "nothing happened". 1–5 January 2025 has no notices, awards or pre-specifications in the original source because of the KONEPS system migration. Compare award rates within the same contract method. Unit-price contracts for "each ordering agency" are a shared ceiling and should not be summed.
-- **Defense procurement** — A separate system from KONEPS. Cancelled notices and amended contracts are folded into one project and counted once.
-- **Local businesses** — "New" and "gone" mean shops that entered or left the list, not actual openings and closures; the jump in December 2024 reflects wider collection. Brand counts are matched by shop name and are not official store counts.
-- **Real estate** — Prices are transaction medians, not averages or an index, so they can move against the market when the mix of deals changes. Cancelled deals are excluded. The latest one to two months look low because filings are allowed up to 30 days.
-- **Companies** — Average income per person is an estimate derived from National Pension contributions. Linking a company across months relies on partial registration numbers, names and addresses and is not perfect.
-- **Filings** — Filings are written by the filers; the Financial Supervisory Service does not guarantee their accuracy.
-- **Trade** — Amounts are in USD. 10-day flash figures are preliminary.
-- **Everything** — For investment or business decisions, check the original source and the situation on the ground. The connectors do not give buy or sell opinions.
+- **조달** — 2023년 이전은 '없음'이 아니라 '보유 기간 밖'입니다. 2025년 1월 1~5일은 차세대 나라장터 전환으로 원본에 공고·낙찰·사전규격이 없습니다(누락이 아닙니다). 낙찰률은 같은 계약 방법끼리 비교해야 하고, '각 수요기관' 단가계약은 여러 기관의 총한도라 합계에 더하지 않습니다.
+- **국방조달** — 나라장터와 별개 시스템입니다. 취소공고와 변경계약은 같은 사업으로 묶어 한 번만 셉니다.
+- **상권** — 신규·폐업은 실제 개업·폐업이 아니라 '목록에 새로 오르고 빠진 가게'입니다. 2024년 12월의 급증은 수집 범위가 넓어진 결과입니다. 브랜드 점포 수는 상호명으로 센 것이라 공식 매장 수가 아닙니다.
+- **부동산** — 가격은 평균이나 지수가 아니라 거래 중위값이라, 거래 구성이 바뀌면 시세와 다르게 움직일 수 있습니다. 해제된 거래는 뺍니다. 최근 1~2개월은 신고 기한(30일) 때문에 건수가 적게 보입니다.
+- **기업** — 1인 평균 소득은 국민연금 고지금액으로 추정한 값입니다. 달마다 같은 기업을 잇는 기준(사업자번호 일부·이름·주소)이 완벽하지 않습니다.
+- **공시** — 공시 내용은 제출인이 작성한 것이며 금융감독원이 정확성을 보장하지 않습니다.
+- **수출입** — 금액은 USD이고, 10일 속보는 잠정치입니다.
+- **공통** — 투자나 창업 같은 결정에는 원자료와 현장 확인을 함께 하세요. 커넥터는 매수·매도 의견을 내지 않습니다.
 
-## Example questions
+## 예시 질문
 
-Questions work best in Korean, since place names and agency names are Korean. More in [EXAMPLES.md](EXAMPLES.md).
+전체 목록은 [EXAMPLES.md](EXAMPLES.md)에 있습니다.
 
-- "올해 나라장터에서 가장 많이 수주한 기업 순위" — top vendors on KONEPS this year
-- "카페가 가장 많은 행정동" — the district with the most cafés
-- "은마아파트 84㎡ 시세와 전세가율" — price and jeonse ratio for one apartment complex
-- "최근 2년 반도체(8542) 월별 수출과 나라별 비중" — monthly semiconductor exports and country shares
-- "성수동 아파트값, 새로 생긴 가게, 구청 발주 사업을 한 번에 정리해줘" — home prices, new shops and public projects for one neighborhood, across three fields
+- "올해 나라장터에서 가장 많이 수주한 기업 순위"
+- "카페가 가장 많은 행정동"
+- "은마아파트 84㎡ 시세와 전세가율"
+- "최근 2년 반도체(8542) 월별 수출과 나라별 비중"
+- "성수동 아파트값, 새로 생긴 가게, 구청 발주 사업을 한 번에 정리해줘" (여러 분야에 걸친 질문)
 
-## Privacy
+## 개인정보
 
-Lookup tools do not ask for anything that identifies you, and your conversation with the assistant is not sent to the server. See the [privacy policy](https://datawatongchal.com/mcp/privacy).
+조회 도구는 이용자를 식별하는 정보를 요구하지 않으며, AI와 나눈 대화 내용은 서버로 오지 않습니다. 자세한 내용은 [개인정보처리방침](https://datawatongchal.com/mcp/privacy)을 보세요.
 
-## Links and contact
+## 링크와 문의
 
-- Website: <https://datawatongchal.com>
-- Guide: <https://datawatongchal.com/mcp/docs>
-- Summary for AI: <https://datawatongchal.com/llms.txt>
-- Questions, bug reports and security reports: <dkc@datawatongchal.com>, or open an issue in this repository
+- 웹사이트: <https://datawatongchal.com>
+- 안내 문서: <https://datawatongchal.com/mcp/docs>
+- AI용 요약: <https://datawatongchal.com/llms.txt>
+- 문의·버그·보안 신고: <dkc@datawatongchal.com> 또는 이 저장소의 이슈
