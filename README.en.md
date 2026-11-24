@@ -30,6 +30,18 @@ Settings → Connectors → Add custom connector → enter a name and the URL ab
 claude mcp add --transport http datawatongchal https://datawatongchal.com/mcp
 ```
 
+**ChatGPT**
+Custom servers can be added on the web (chatgpt.com) only, not in the mobile apps. The steps below follow OpenAI's guidance as of November 2026.
+
+1. Go to [chatgpt.com/plugins](https://chatgpt.com/plugins) (Plugins).
+2. Select the plus button → **Add custom MCP server**.
+3. Enter a name (description optional) and, under **Connection**, the server URL `https://datawatongchal.com/mcp`.
+4. For authentication choose **No authentication**.
+5. Read the notice, tick **I understand and want to continue**, then select **Create as a plugin**.
+6. In a new conversation, type `@` in the prompt box, pick the plugin you just created and ask your question.
+
+According to OpenAI, custom MCP server connections are available on Business, Enterprise and Edu plans (a workspace may require admin permission), and Pro can connect read-only tools. Every tool in these connectors is read-only. Plans and menus change, so check the [OpenAI help article](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta) as well.
+
 **Other clients**
 Any client that supports remote Streamable HTTP MCP servers should work with the URL alone. Check your client's documentation for the exact syntax.
 

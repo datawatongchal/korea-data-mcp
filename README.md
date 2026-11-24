@@ -30,6 +30,18 @@ https://datawatongchal.com/mcp
 claude mcp add --transport http datawatongchal https://datawatongchal.com/mcp
 ```
 
+**ChatGPT**
+웹(chatgpt.com)에서만 추가할 수 있고, 모바일 앱에서는 추가할 수 없습니다. 아래는 2026년 11월 OpenAI 안내 기준이며, 메뉴 이름은 영문 화면 기준입니다.
+
+1. [chatgpt.com/plugins](https://chatgpt.com/plugins)(Plugins)로 갑니다.
+2. 더하기(+) 버튼 → **Add custom MCP server**를 누릅니다.
+3. 이름을 적고(설명은 선택), **Connection**의 서버 주소 칸에 `https://datawatongchal.com/mcp` 를 넣습니다.
+4. 인증은 **No authentication**을 고릅니다.
+5. 안내문을 읽고 **I understand and want to continue**에 표시한 뒤 **Create as a plugin**을 누릅니다.
+6. 새 대화에서 입력창에 `@`를 치고 방금 만든 플러그인을 고른 다음 질문합니다.
+
+OpenAI 안내에 따르면 사용자 지정 MCP 서버 연결은 Business·Enterprise·Edu 요금제에서 지원하고(워크스페이스에서는 관리자 권한이 필요할 수 있습니다), Pro는 읽기 전용 도구를 연결할 수 있습니다. 이 커넥터의 도구는 모두 읽기 전용입니다. 요금제와 메뉴는 바뀔 수 있으니 [OpenAI 도움말](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta)을 함께 확인하세요.
+
 **그 밖의 클라이언트**
 Streamable HTTP 원격 MCP 서버를 지원하는 클라이언트라면 주소만 넣으면 됩니다. 설정 문법은 각 클라이언트 문서를 확인하세요.
 
