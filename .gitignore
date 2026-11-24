@@ -18,3 +18,9 @@ Thumbs.db
 desktop.ini
 .vscode/
 .idea/
+
+# MCP Registry 도메인 인증용 비밀 키 (절대 올리지 않음)
+.secrets/
+
+# 등록 도구 실행 파일
+.tools/
