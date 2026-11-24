@@ -1,0 +1,20 @@
+# Claude Code 작업 지침·로컬 설정 (공개하지 않음)
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+
+# 비밀 값
+.env
+.env.*
+*.pem
+*.key
+
+# MCP Registry 게시 도구가 만드는 로그인 토큰
+.mcpregistry_*
+
+# OS·편집기
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

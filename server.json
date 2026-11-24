@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.datawatongchal/korea-data",
+  "title": "Korea Data (데이터와통찰)",
+  "description": "Korean public data for AI: procurement, real estate, shops, land, companies, filings, trade.",
+  "version": "1.0.0",
+  "websiteUrl": "https://datawatongchal.com/mcp/docs",
+  "repository": {
+    "url": "https://github.com/datawatongchal/korea-data-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://datawatongchal.com/mcp"
+    }
+  ]
+}
