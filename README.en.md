@@ -2,7 +2,7 @@
 
 [한국어](README.md) | **English**
 
-Remote [MCP](https://modelcontextprotocol.io) connectors that let an AI assistant query Korean public data: government procurement, defense procurement, local businesses, real-estate transactions, land parcels, companies, corporate filings, trade statistics and startup support programs.
+Remote [MCP](https://modelcontextprotocol.io) connectors that let an AI assistant query Korean public data: government procurement, defense procurement, local businesses, real-estate transactions, land parcels, official land prices, companies, corporate filings, trade statistics and startup support programs.
 
 Operated by Data & Insight (㈜데이터와통찰) — <https://datawatongchal.com>
 
@@ -49,22 +49,23 @@ If tools do not show up, refresh the tool list in the connector settings and sta
 
 ## Connectors
 
-One all-in-one connector and nine single-field connectors. Tool-name prefixes tell you the field.
+One all-in-one connector and ten single-field connectors. Tool-name prefixes tell you the field.
 
 | Field | URL | Tools | What it covers |
 |---|---|---|---|
-| **All-in-one** | `https://datawatongchal.com/mcp` | 41 | Everything below in a single connector. New fields are added automatically. |
+| **All-in-one** | `https://datawatongchal.com/mcp` | 44 | Everything below in a single connector. New fields are added automatically. |
 | Procurement | `https://datawatongchal.com/mcp/g2b` | 8 | KONEPS (나라장터): order plans → pre-specifications → bid notices → awards → contracts |
 | Defense procurement | `https://datawatongchal.com/mcp/d2b` | 3 | DAPA defense e-procurement (a separate system from KONEPS) |
 | Local businesses | `https://datawatongchal.com/mcp/store` | 4 | About 2.7 million operating shops by administrative district and industry |
 | Real estate | `https://datawatongchal.com/mcp/realestate` | 4 | About 24 million actual transactions since 2020, plus commercial rent and vacancy |
 | Land (Pointology) | `https://datawatongchal.com/mcp/pointology` | 3 | Everything about one coordinate: land category, official land price, zoning, satellite observations |
+| Land prices | `https://datawatongchal.com/mcp/landprice` | 3 | 2026 official individual land prices for about 35.9 million parcels nationwide: most and least expensive land, regional distribution, single parcels |
 | Companies | `https://datawatongchal.com/mcp/corp` | 4 | About 550,000 workplaces from National Pension data, plus Data Voucher suppliers |
 | Filings | `https://datawatongchal.com/mcp/dart` | 4 | DART disclosure filings and listed-company financials |
 | Trade | `https://datawatongchal.com/mcp/trade` | 4 | Customs export/import statistics since 2015 by item (HS 10-digit), country and month |
 | Startup support | `https://datawatongchal.com/mcp/startup` | 7 | Support program notices, incubator space, free courses, location data |
 
-Counts are approximate, as of November 2026. An introduction page for each field is at `https://datawatongchal.com/connectors/{all|g2b|d2b|store|realestate|pointology|corp|dart|trade|startup}`.
+Counts are approximate, as of November 2026. An introduction page for each field is at `https://datawatongchal.com/connectors/{all|g2b|d2b|store|realestate|pointology|landprice|corp|dart|trade|startup}`.
 
 ## Tools
 
@@ -123,6 +124,14 @@ Counts are approximate, as of November 2026. An introduction page for each field
 | `corp_changes` | Changes in a period: new, closed, industry, address or name changes, incorporation |
 | `corp_stats` | Company counts by industry, region and size |
 
+### Land prices — `lp_`
+
+| Tool | What it tells you |
+|---|---|
+| `lp_rank` | The most and least expensive parcels (official price per m²) nationwide or in a region |
+| `lp_stats` | A region's price distribution (min, percentiles, max, mean) and a ranking of the regions directly below it |
+| `lp_parcel` | One parcel's official price and its rank within its neighborhood and district |
+
 ### Filings — `dart_`
 
 | Tool | What it returns |
@@ -168,6 +177,7 @@ Counts are approximate, as of November 2026. An introduction page for each field
 | Local businesses | Small Enterprise and Market Service, shop information (data.go.kr) | 2023-03 – | One edition per quarter |
 | Real estate | Ministry of Land, Infrastructure and Transport, actual transaction prices (data.go.kr OpenAPI); Korea Real Estate Board R-ONE commercial rental survey | 2020-01 – | Daily (last 3 months re-fetched for late filings and cancellations); rental survey quarterly |
 | Land | Data & Insight's own Sentinel-1/Sentinel-2 archive; MOLIT V-World; Ministry of Environment land cover map; MAFRA Farm Map; others | Korean Peninsula; NDVI since 2019 | Each value carries its own source and date |
+| Land prices | MOLIT official individual land prices (V-World spatial data download) | 2026 (as of January 1) | Yearly |
 | Companies | National Pension Service workplace data; K-Data Data Voucher supplier list (data.go.kr) | Monthly editions from 2026-01 | Monthly |
 | Filings | Financial Supervisory Service, DART OpenAPI | Filings: last 3 years; financials: 2015 – (incl. quarterly) | Daily |
 | Trade | Korea Customs Service trade statistics (data.go.kr) | 2015 – ; about 245 countries; USD; 10-day flash since 2016 | Monthly |
@@ -182,6 +192,7 @@ The connectors return organized data and notes on how to read it. The judgment i
 - **Local businesses** — "New" and "gone" mean shops that entered or left the list, not actual openings and closures; the jump in December 2024 reflects wider collection. Brand counts are matched by shop name and are not official store counts.
 - **Real estate** — Prices are transaction medians, not averages or an index, so they can move against the market when the mix of deals changes. Cancelled deals are excluded. The latest one to two months look low because filings are allowed up to 30 days.
 - **Companies** — Average income per person is an estimate derived from National Pension contributions. Linking a company across months relies on partial registration numbers, names and addresses and is not perfect.
+- **Land prices** — Official land prices are set by the government for taxes and charges. They are not market prices and are usually lower. The cheapest parcels are usually roads and forest land in remote mountains.
 - **Filings** — Filings are written by the filers; the Financial Supervisory Service does not guarantee their accuracy.
 - **Trade** — Amounts are in USD. 10-day flash figures are preliminary.
 - **Everything** — For investment or business decisions, check the original source and the situation on the ground. The connectors do not give buy or sell opinions.
