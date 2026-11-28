@@ -13,6 +13,10 @@ Operated by Data & Insight (㈜데이터와통찰) — <https://datawatongchal.c
 
 This repository is documentation only. It contains no server source code and does not redistribute any dataset — the connectors are a lookup service on top of data published by Korean public agencies, and every answer names its source.
 
+**36-second how-to video** (in Korean) — copy the connector address, connect it to Claude or ChatGPT, and ask right away
+
+<a href="https://youtube.com/shorts/laWN9W6MSPI"><img src="assets/video-thumbnail.jpg" alt="Datawatongchal connector 36-second how-to video (YouTube, Korean)" width="270"></a>
+
 ## Quick start
 
 Use the all-in-one connector unless you only need one field:
